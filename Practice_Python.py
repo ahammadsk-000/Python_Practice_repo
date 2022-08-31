@@ -2309,10 +2309,201 @@ d = f.read()
 for i in d:
     print(i)'''
 
+# Regular Expressions
+'''import re
+s='GeeksforGeeks: A computer science portal for geeks'
+match = re.search(r'computer',s)
+print("Start index: ",match.start())
+print("End index: ",match.end())'''
+
+import re
+'''s="geeks.forgeeks"
+match = re.search(r'.',s)
+print(match)
+
+match1 = re.search(r'\.',s)
+print(match1)'''
+
+'''s="geeky shows"
+match = re.search(r'^geeky',s)
+print(match.start())'''
+
+'''string="""Hello my Number is 123456789 and
+            my friend's number is 987654321"""
+
+regex = r'\d+'
+
+start = re.findall(regex,string)
+print(start)'''
+
+'''r = re.compile('[a-e]')
+print(r.findall("Aye, said Mr. Gibenson Stark"))'''
+
+'''p = re.compile('\d+')
+f = p.findall("I went to him at 11 A.M. on 4th July 1886")
+print(f)'''
+
+'''p = re.compile('\w')
+print(p.findall("He said * in some_lang."))
+
+p = re.compile('\W')
+print(p.findall("I went to school at 11 A.M., he \
+said *** in some_language."))
+
+p = re.compile('\w+')
+print(p.findall("I went to school at 11 A.M., he \
+said *** in some_language."))
+
+p1 = re.compile('\W')
+print(p1.findall("he said *** in some_language."))'''
 
 
+'''f = re.compile('ab*')
+print(f.findall("ababbaabbb"))'''
+
+#from re import split
+'''import re
+print(re.split('\W+','Words, words , Words'))
+print(re.split('\W+',"Word's words Words",2))
+print(re.split('\W+','On 12th Jan 2016, at 11:02 AM'))
+print(re.split('\d+','On 12th Jan 2016, at 11:02 AM'))
+print(re.split('\d+','On 12th Jan 2016, at 11:02 AM',1))
+print(re.split('[a-f]','Aey, Boy oh boy, come here'))
+print(re.split('[a-f]+','Aey, Boy oh boy, come here',flags=re.IGNORECASE))'''
+
+#import re
+
+'''p = re.sub(r'ub','@#','Subject has Uber booked already',count=1,flags=re.IGNORECASE)
+print(p)'''
+
+'''print(re.subn('ub','@#','Subject has Uber booked already',flags=re.IGNORECASE))'''
+
+'''print(re.escape("This is Awesome even 1 AM"))'''
+
+'''regex = r"([a-zA-Z]+) (\d+)"
+match = re.search(regex,"I was born on June 24")
+if match != 'None':
+
+    print('Starting index {0} and ending index {1}'.format(match.start(),match.end()))
+    print('Full Match %s'%(match.group(0)))
+    print('Month: %s'%(match.group(1)))
+    print('Date: %s'%(match.group(2)))'''
+
+'''import re
+s="Welcome to GeeksForGeeks"
+res = re.search(r'\bG',s)
+print(res.re)
+print(res.string)
+print(res.start())
+print(res.end())
+print(res.span())'''
+
+'''import re
+s="Welcome to GeeksForGeeks"
+res = re.search(r"\bGea",s)
+print(res.start())
+print(res.end())
+print(res.span())'''
+
+import re
+'''s="Welcome to GeeksForGeeks"
+res = re.search(r"\D{2} t",s)
+print(res.group())'''
+
+'''regex_email = re.compile(r'^([a-z0-9_\.-]+)@([a-z0-9\.-]+)\.([a-z\.]{2,6})$',re.IGNORECASE)
+
+# Using verbose name
+regex_email = re.compile(r"""
+^([a-z0-9_\.-]+)   # local part
+@   # single @ sign
+([0-9a-z\.-]+) # Domain name
+\.  # Single dot
+([a-z]{2,6})$  # Top level domain
+
+""",re.VERBOSE|re.IGNORECASE)'''
+
+'''def validate_email(email):
+    regex_email = re.compile(r"""
+    ^([a-z0-9_\.-]+)    # Local part
+    @     # Single sign
+    ([0-9a-z_\.-]+)   # Domain name
+    \.     # single dot
+    ([a-z]{2,6})$     # Top level domain
+       
+    """,re.VERBOSE|re.IGNORECASE)
+
+    res = regex_email.fullmatch(email)
+
+    if res:
+        print("{} is valid: Details as follows".format(email))
+        print("Local: {} ".format(res.group(1)))
+        print("Domain: {} ".format(res.group(2)))
+        print("Top level domain: {}".format(res.group(3)))
+        print()
+
+    else:
+        print("{} is Invalid".format(email))
+
+validate_email("expectopatronum@gmail.com")
+validate_email("avadakedavra@yahoo.com@")
+validate_email("Crucio@.com")'''
 
 
+'''def password_check(passwd):
+    Special_Symbol = ['$','!','@','%','^','&','*']
+    val = True
+
+    if len(passwd) >6:
+        val = True
+    if len(passwd) <21:
+        val = True
+    if not any(i for i in passwd if i.isdigit() == True):
+        val = False
+    if not any(i for i in passwd if i.isupper() == True):
+        val = False
+    if not any(i for i in passwd if i.islower() == True):
+        val = False
+    if not any(i for i in passwd if i in Special_Symbol):
+        val = False
+
+    if val:
+        return True
+    else:
+        return False
+
+t = password_check('asd123')
+if t == True:
+    print('Password is valid')
+else:
+    print('Password is invalid')'''
+
+
+'''import re
+pattern = "^.*(?=.{8,20})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@?#$%^&+=]).*$"
+password = input("Enter password: ")
+result = re.findall(pattern,password)
+if result:
+    print("Password is valid")
+else:
+    print("Password is not valid")
+'''
+
+
+'''import re
+reg = re.compile('[8 9]\d{9}')
+f = reg.findall('9666666660')
+if f:
+    print("Phone number is valid")
+else:
+    print("Phone number is not valid")'''
+
+'''import re
+reg = re.compile('[A-Z][a-z][0-9]{1}')'''
+
+import re
+from getpass import getpass
+passwd = getpass("Enter the password: ")
+print(passwd)
 
 
 
